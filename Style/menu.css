@@ -1,0 +1,24 @@
+#menu {
+    background-color: #3CABC3;
+    height: fit-content;
+}
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    line-height: 1.5em;
+}
+#menu li {
+    float: left;
+    padding: 16px;
+    color: white;
+    border-right: 0.2em solid #fff;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    
+}
+#menu li:hover {
+    background-color: #3696ac;
+    cursor: pointer;
+}
