@@ -2,8 +2,6 @@
 <html lang="en">
   <head>
     <title>Template</title>
-    <link rel="stylesheet" type="text/css" href="Style/menu.css" />
-    <link rel="stylesheet" type="text/css" href="Style/template.css" />
     <link rel="stylesheet" type="text/css" href="Style/content.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,25 +17,11 @@
       <script src="js/bootstrap.min.js"></script>
 
       <div id="menu">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <a class="brand" href="#">careerWise</a>
-            <ul class="nav">
-              <li class="active"><a href="#">People</a></li>
-              <li><a href="#">Companies</a></li>
-              <li><a href="#">Activity</a></li>
-              <li><a href="#">Opportunities</a></li>
-              <li style="float: right; border-right: none">
-                <a href="profilePage.html">You</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <?php include 'navBar.php';?>
       </div>
       
       <div id="content">
-        <h1>Template</h1>
-        <p>test</p>
+        <?php include 'profilePage.php';?>
       </div>
     </div>
   </body>
