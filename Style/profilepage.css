@@ -1,0 +1,6 @@
+div#content div#profilePage img#userProfilePicture{
+    width:20em;
+    position: relative;
+    left: -10em;
+    top: -10em;
+}
