@@ -1,0 +1,7 @@
+html, div#main {
+    margin: 0px;
+    background-color: #D9D9D9;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    font-family: 'K2D', sans-serif;
+}

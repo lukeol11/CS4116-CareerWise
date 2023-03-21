@@ -1,0 +1,32 @@
+#menu .navbar .navbar-inner {
+    background-image: linear-gradient(to bottom,#3CABC3,#3497ad);
+    height: fit-content;
+    border: none;
+}
+#menu ul {
+    list-style-type: none;
+    margin: 0em;
+    padding: 0;
+    overflow: hidden;
+    line-height: 1.5em;
+    display: contents;
+}
+#menu li, #menu .navbar-inner .brand {
+    font-size: 1.5em;
+    padding: 0.8em;
+    color: white;
+    border-right: 0.2em solid #fff;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+#menu .navbar-inner .brand {
+    padding: 1em;
+}
+#menu .navbar-inner .brand, #menu li a {
+    color: white;
+    text-shadow: none;
+}
+#menu li:hover,  #menu li.active a{
+    background-color: #3696ac;
+    cursor: pointer;
+}

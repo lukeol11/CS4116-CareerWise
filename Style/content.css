@@ -1,0 +1,7 @@
+div#content {
+    background-color: #BDBDBD;
+    margin: 5em;
+    border-radius: 1em;
+    height: fit-content;
+    padding: 1em;
+}
