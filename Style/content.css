@@ -2,6 +2,32 @@ div#content {
     background-color: #BDBDBD;
     margin: 5em;
     border-radius: 1em;
+     width: auto;
     height: fit-content;
-    padding: 1em;
+    padding: 1em; 
+}
+
+div#content2 {
+    background-color: #BDBDBD;
+    margin: 5em;
+    border-radius: 1em;
+    width: 400px;
+    height: fit-content;
+    padding: 1em; 
+    margin-left: auto;
+    margin-right: auto;
+}
+a#link {
+    color: #ffff;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    display: block;
 }
