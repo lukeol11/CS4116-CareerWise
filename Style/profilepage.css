@@ -1,6 +1,45 @@
+div#content div#profilePage {
+    color: white;
+}
+
 div#content div#profilePage img#userProfilePicture{
     width:20em;
     position: relative;
     left: -5em;
     top: -5em;
+}
+div#content div#profilePage .btn-primary {
+    background-image: linear-gradient(to bottom,#3CABC3,#3497ad);
+    background-color: #3696ac;
+    float: right;
+    font-size: 1.5em;
+    padding: 1em;
+}
+
+div#content div#profilePage #header {
+    display: inline-block;
+    border-bottom: white 0.2em solid;
+    padding-bottom: 5em;
+    width: 60%;
+}
+
+div#content div#profilePage #body #left {
+    display: inline-block;
+    width: 40%;
+    text-align: center;
+    border-right: white 0.2em solid;
+    margin-top: 1em;
+}
+
+div#content div#profilePage #body #right {
+    display: inline-block;
+    width: 40%;
+    text-align: center;
+    margin-top: 1em;
+}
+
+div#content div#profilePage #body {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
 }
