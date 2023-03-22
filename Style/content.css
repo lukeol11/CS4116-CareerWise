@@ -1,33 +1,20 @@
+html, div#main {
+    margin: 0px;
+    background-color: #D9D9D9;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    font-family: 'K2D', sans-serif;
+}
 div#content {
     background-color: #BDBDBD;
     margin: 5em;
+    margin-top: 10em;
     border-radius: 1em;
      width: auto;
     height: fit-content;
-    padding: 1em; 
-}
-
-div#content2 {
-    background-color: #BDBDBD;
-    margin: 5em;
-    border-radius: 1em;
-    width: 400px;
-    height: fit-content;
-    padding: 1em; 
+    padding: 1em;
+    max-width: 60%;
     margin-left: auto;
     margin-right: auto;
-}
-a#link {
-    color: #ffff;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: "Times New Roman", Times, serif;
-    text-align: center;
-    display: block;
+    min-height: 20em;
 }
