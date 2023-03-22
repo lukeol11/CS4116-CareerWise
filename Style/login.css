@@ -1,0 +1,15 @@
+#login-box {
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #login-box h2 {
+    text-align: center;
+    margin-top: 0;
+    color: white;
+  }

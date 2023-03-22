@@ -10,6 +10,7 @@ div#content {
     margin: 5em;
     margin-top: 10em;
     border-radius: 1em;
+     width: auto;
     height: fit-content;
     padding: 1em;
     max-width: 60%;
