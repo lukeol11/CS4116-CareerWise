@@ -22,10 +22,16 @@
         $password = "XzX7r5XomWU";
         $databaseName = "epiz_33784251_cs4116";
         $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
-        session_start();
-        $userId = $_SESSION['user_id'];
-        $userDetails = getUserDetails($connection, $userId);
-        $_POST['userDetails'] = $userDetails;
+        if (isset($_GET['userid'])) {
+            $userId = $_GET['userid'];
+            $userDetails = getUserDetails($connection, $userId);
+            $_POST['userDetails'] = $userDetails;
+        } else {
+            session_start();
+            $userId = $_SESSION['user_id'];
+            $userDetails = getUserDetails($connection, $userId);
+            $_POST['userDetails'] = $userDetails;
+        }
         mysqli_close($connection);
         ?>
         <div id="menu">
