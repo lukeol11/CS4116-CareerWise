@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>careerWise | Login</title>
+  <title>careerWise | Sign Up</title>
   <link rel="stylesheet" type="text/css" href="Style/menu.css" />
   <link rel="stylesheet" type="text/css" href="Style/content.css" />
   <link rel="stylesheet" href="Style/SignUp.css">

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>careerWise | Profile Page</title>
+    <title>careerWise | People</title>
     <link rel="stylesheet" type="text/css" href="Style/content.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
