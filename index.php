@@ -20,7 +20,6 @@
     </div>
 
     <div id="content">
-      <?php include 'profilePage.php'; ?>
     </div>
   </div>
 </body>
