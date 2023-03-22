@@ -27,23 +27,26 @@
         </div>
       </div>
       
-      <div id="content2">
-        <div class="container-fluid">
-          <div class="row justify-content-center align-items-center">
-            <div id="login-box">
-              <h2>Welcome!</h2>
-              <form>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="username" placeholder="username" required class="input-box">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" id="password" placeholder="password" required class="input-box">
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-                <a id="link" href="http://careerwise.great-site.net/">New? Create an account now!</a>
-              </form>
+      <div id="content">
+        <div id="loginPage">
+
+          <div class="container-fluid">
+            <div class="row justify-content-center align-items-center">
+              <div id="login-box">
+                <h2>Welcome!</h2>
+                <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="username" placeholder="username" required class="input-box">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="password" required class="input-box">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Login</button>
+                  <a id="link" href="SignUp.php">New? Create an account now!</a>
+                </form>
+              </div>
             </div>
-          </div>
+        </div>
         </div>
       </div>
     </div>
