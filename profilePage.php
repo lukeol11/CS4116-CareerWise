@@ -22,7 +22,8 @@
         $password = "XzX7r5XomWU";
         $databaseName = "epiz_33784251_cs4116";
         $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
-        $userId = 1;
+        session_start();
+        $userId = $_SESSION['user_id'];
         $userDetails = getUserDetails($connection, $userId);
         $_POST['userDetails'] = $userDetails;
         mysqli_close($connection);
