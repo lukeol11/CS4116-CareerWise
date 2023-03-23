@@ -44,7 +44,7 @@
                 <div id="header">
                     <h2><?php echo $_POST['userDetails']["FirstName"] . " " . $_POST['userDetails']["LastName"]; ?></h2>
                     <p><?php echo $_POST['userDetails']["company"]; ?></p>
-                    <button type="button" class="btn btn-primary">Add Friend +</button>
+                    <button style="float: right;" type="button" class="btn btn-primary">Add Friend +</button>
                 </div>
                 <div id="body">
                     <div id="left">
@@ -62,6 +62,21 @@
                 <div>
                 </div>
             </div>
+        </div>
+        <!-- if session[admin]=true -->
+        <?php
+        session_start();
+        if ($_SESSION['admin'] == true) {
+            echo '<div id="content"><div id="adminControls">
+            <h2>Admin Controls</h2>
+            <button type="button" class="btn btn-primary">Ban User</button>
+            <button type="button" class="btn btn-primary">Pardon User</button>
+            <button type="button" class="btn btn-primary">Make Admin</button>
+            <button type="button" class="btn btn-primary">Make User</button>
+        </div></div>';
+        }
+        ?>
+    </div>
 </body>
 
 </html>

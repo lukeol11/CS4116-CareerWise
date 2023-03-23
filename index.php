@@ -54,16 +54,24 @@
                 $connection = mysqli_connect($hostName, $email, $password, $databaseName);
                 $email = mysqli_real_escape_string($connection, $_POST['email']);
                 $password = mysqli_real_escape_string($connection, $_POST['password']);
-                $query = "SELECT * FROM users WHERE email = '$email' AND company = '$password'";
+                $query = "SELECT users.*, user_type.User_Type as user_type FROM users LEFT JOIN user_type ON users.user_id = user_type.user_id WHERE users.email = '$email' AND users.company = '$password'";
                 $result = mysqli_query($connection, $query);
                 if (mysqli_num_rows($result) == 1) {
-                  // Get the user ID from the result and store it in a variable
                   $row = mysqli_fetch_assoc($result);
                   $user_id = $row['user_id'];
+                  $user_type = $row['user_type'];
 
                   // Add the user ID to the session
                   session_start();
                   $_SESSION['user_id'] = $user_id;
+
+                  // Check if the user is an admin
+                  if ($user_type == 'Admin') {
+                    $_SESSION['admin'] = true;
+                  } else {
+                    $_SESSION['admin'] = false;
+                  }
+                
 
                   echo "Login Successful... Redirecting";
                   header("Location: profilePage.php");

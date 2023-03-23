@@ -1,4 +1,4 @@
-div#content div#profilePage {
+div#content div#profilePage, div#content div#adminControls {
     color: white;
 }
 
@@ -8,10 +8,9 @@ div#content div#profilePage img#userProfilePicture{
     left: -5em;
     top: -5em;
 }
-div#content div#profilePage .btn-primary {
+div#content div#profilePage .btn-primary, div#content div#adminControls .btn-primary {
     background-image: linear-gradient(to bottom,#3CABC3,#3497ad);
     background-color: #3696ac;
-    float: right;
     font-size: 1.5em;
     padding: 1em;
 }
