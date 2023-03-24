@@ -32,6 +32,10 @@
             $userDetails = getUserDetails($connection, $userId);
             $_POST['userDetails'] = $userDetails;
         }
+        //check if user is banned
+        $sql = "SELECT * FROM banned WHERE user_id = $userId";
+        $result = mysqli_query($connection, $sql);
+        $banned = mysqli_num_rows($result) > 0;
         mysqli_close($connection);
         ?>
         <div id="menu">
@@ -44,7 +48,13 @@
                 <div id="header">
                     <h2><?php echo $_POST['userDetails']["FirstName"] . " " . $_POST['userDetails']["LastName"]; ?></h2>
                     <p><?php echo $_POST['userDetails']["company"]; ?></p>
-                    <button style="float: right;" type="button" class="btn btn-primary">Add Friend +</button>
+                    <?php
+                    if ($banned) {
+                        echo '<span class="label label-important">Banned</span>';
+                    } else {
+                        echo '<button type="button" class="btn btn-primary">Add Friend +</button>';
+                    }
+                    ?>
                 </div>
                 <div id="body">
                     <div id="left">
