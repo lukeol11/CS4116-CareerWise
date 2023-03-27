@@ -4,9 +4,8 @@
 <head>
   <title>careerWise | Login</title>
   <link rel="stylesheet" type="text/css" href="Style/menu.css" />
-  <link rel="stylesheet" type="text/css" href="Style/template.css" />
   <link rel="stylesheet" type="text/css" href="Style/content.css" />
-  <link rel="stylesheet" href="Style/login.css">
+  <link rel="stylesheet" type="text/css" href="Style/login.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=K2D:wght@100&display=swap" rel="stylesheet" />

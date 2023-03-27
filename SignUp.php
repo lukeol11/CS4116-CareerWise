@@ -26,33 +26,59 @@
     </div>
 
     <div id="content">
-<div id="signUpPage">
-  <h1>Create an account</h1>
-  <div class="signup-box">
-    <div class="left-box">
-      <h1> Basic Details</h1>
-      <form>
-        <input type="text" placeholder="Name" required class="input-box">
-        <input type="text" placeholder="Username" required class="input-box">
-        <input type="email" placeholder="Email" required class="input-box">
-        <input type="password" placeholder="Create Password" required class="input-box">
-        <div class="checkbox">
-          <input type="checkbox" id="terms">
-          <label for "terms"> I accept the terms and conditions.</label>
+      <div id="signUpPage">
+        <h1>Create an account</h1>
+        <div class="signup-box">
+          <div class="left-box">
+            <h1> Basic Details</h1>
+            <form method="POST">
+              <input type="text" name="firstName" placeholder="First Name" required class="input-box">
+              <input type="text" name="lastName" placeholder="Last Name" required class="input-box">
+              <input type="email" name="email" placeholder="Email" required class="input-box">
+              <input type="password" name="password" placeholder="Create Password" required class="input-box">
+              <div class="checkbox">
+                <input type="checkbox" id="terms">
+                <label for "terms"> I accept the terms and conditions.</label>
+              </div>
+              <button class="btn-primary" name="submit" type="submit"> Create! <span> &#x27f6; </span></button>
+            </form>
+            <?php
+            $dbhost = "sql109.epizy.com";
+            $dbuser = "epiz_33784251";
+            $dbpass = "XzX7r5XomWU";
+            $dbname = "epiz_33784251_cs4116";
+
+            $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+            if (mysqli_connect_errno()) {
+              die('Could not connect: ' . mysqli_connect_error());
+            }
+
+            if (isset($_POST['submit'])) {
+              $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
+              $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
+              $email = mysqli_real_escape_string($conn, $_POST['email']);
+              $password = mysqli_real_escape_string($conn, $_POST['password']);
+
+              $query = "INSERT INTO users (firstName, lastName, email, company) VALUES ('$firstName', '$lastName', '$email', '$password')";
+              if (mysqli_query($conn, $query)) {
+                echo "New record created successfully";
+              } else {
+                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+              }
+            }
+            ?>
+          </div>
+          <div class="right-box">
+            <h1> Jobs & Education</h1>
+            <form>
+              <input type="text" placeholder="Company" required class="input-box">
+              <input type="text" placeholder="Position" required class="input-box">
+            </form>
+          </div>
         </div>
-        <button class="btn-primary" type="submit"> Create! <span> &#x27f6; </span></button>
-      </form>
-    </div>
-    <div class="right-box">
-      <h1> Jobs & Education</h1>
-      <form>
-        <input type="text" placeholder="Company" required class="input-box">
-        <input type="text" placeholder="Position" required class="input-box">
-      </form>
-    </div>
-  </div>
-  <p class="login">Already have an account? <a href="index.php"> Login Now</a></p>
-</div>
+        <p class="login">Already have an account? <a href="index.php"> Login Now</a></p>
+      </div>
 
     </div>
   </div>
