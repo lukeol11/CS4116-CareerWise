@@ -1,0 +1,9 @@
+<?php
+functiongetUserDetails($connection, int$userId)
+{
+    $query= "SELECT company, company_id FROM businesses WHERE company = $company" and company_id = $company_id;
+    $result= mysqli_query($connection, $query);
+    $row= mysqli_fetch_assoc($result);
+    return($row);
+}
+
