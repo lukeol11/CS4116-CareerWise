@@ -9,6 +9,8 @@
             <li><a href="#">Opportunities</a></li>
             <li <?php if ($_SERVER['PHP_SELF'] == "/profilePage.php" && empty($_SERVER['QUERY_STRING'])) echo 'class="active"'; ?> style="float: right; border-right: none">
                 <a href="profilePage.php">You</a>
+            <li <?php if ($_SERVER['PHP_SELF'] == "/company_profile.php" && empty($_SERVER['QUERY_STRING'])) echo 'class="active"'; ?> style="float: right; border-right: none">
+                <a href="company_profile.php">You</a>
             </li>
         </ul>
     </div>
