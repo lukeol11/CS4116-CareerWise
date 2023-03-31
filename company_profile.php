@@ -26,13 +26,10 @@
                 $password = "XzX7r5XomWU";
                 $databaseName = "epiz_33784251_cs4116";
                 $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
-                $query = "SELECT user_id, company, company_id FROM businesses";
-                $result = mysqli_query($connection, $query);
+                $query = "SELECT * FROM business";
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "Name: " . $row["FirstName"] . " " . $row["LastName"] . "<br>";
                     echo "Company: " . $row["company"] . "<br>";
-                    echo "<a href='profilePage.php?userid=" . $row["user_id"] . "'>View Profile</a>";
+                    echo "<a href='companyPage.php?userid=" . $row["user_id"] . "'>View Profile</a>";
                     echo "<br><br>";
                 }
 
