@@ -115,8 +115,6 @@
             if (isset($_POST['submit'])) {
               $company = mysqli_real_escape_string($conn, $_POST['company']);
               $position = mysqli_real_escape_string($conn, $_POST['lastName']);
-              $email = mysqli_real_escape_string($conn, $_POST['email']);
-              $password = mysqli_real_escape_string($conn, $_POST['password']);
 
               $query = "INSERT INTO users (firstName, lastName, email, password) VALUES ('$company', '$', '$', '$')";
               if (mysqli_query($conn, $query)) {
