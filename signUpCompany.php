@@ -5,7 +5,7 @@
   <title>careerWise | Sign Up</title>
   <link rel="stylesheet" type="text/css" href="Style/menu.css" />
   <link rel="stylesheet" type="text/css" href="Style/content.css" />
-  <link rel="stylesheet" href="Style/SignUp.css">
+  <link rel="stylesheet" href="Style/signUpCompany.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=K2D:wght@100&display=swap" rel="stylesheet" />
@@ -27,15 +27,16 @@
 
     <div id="content">
       <div id="signUpPage">
-        <h1>Create an company account</h1>
+        <h1>Register a Company Account</h1>
         <div class="signup-box">
-          <div class="container">
-            <h1> Basic Details</h1>
+          <div class="container-fluid">
+            <h3> Basic Details</h3>
             <form method="POST">
-              <input type="text" name="companyName" placeholder="Company Name" required class="input-box">
+              <input type="text" name="company" placeholder="Company Name" required class="input-box">
               <input type="text" name="contactName" placeholder="Contact Name" required class="input-box">
               <input type="email" name="email" placeholder="Email" required class="input-box">
               <input type="password" name="password" placeholder="Create Password" required class="input-box">
+              <input type="password" name="confirmPassword" placeholder="Confirm Password" required class="input-box">
               <div class="checkbox">
                 <input type="checkbox" id="terms">
                 <label for "terms"> I accept the terms and conditions.</label>
@@ -43,6 +44,7 @@
               <button class="btn-primary" name="submit" type="submit"> Create! <span> &#x27f6; </span></button>
             </form>
             <?php
+            session_start();
             $dbhost = "sql109.epizy.com";
             $dbuser = "epiz_33784251";
             $dbpass = "XzX7r5XomWU";
@@ -55,14 +57,29 @@
             }
 
             if (isset($_POST['submit'])) {
-              $companyName = mysqli_real_escape_string($conn, $_POST['companyName']);
+              $company = mysqli_real_escape_string($conn, $_POST['company']);
               $contactName = mysqli_real_escape_string($conn, $_POST['contactName']);
               $email = mysqli_real_escape_string($conn, $_POST['email']);
               $password = mysqli_real_escape_string($conn, $_POST['password']);
+              $confirmPassword = mysqli_real_escape_string($conn, $_POST['confirmPassword']);
 
-              $query = "INSERT INTO business (companyName, contactName, email, password) VALUES ('$companyName', '$contactName', '$email', '$password')";
+              // Check if passwords match
+              if ($password != $confirmPassword) {
+                echo "Error: Passwords do not match";
+                exit();
+              }
+
+              // Check password length
+              if (strlen($password) < 8) {
+                echo "Error: Password must be at least 8 characters long";
+                exit();
+              }
+
+              $query = "INSERT INTO business (company, contactName, email, password) VALUES ('$company', '$contactName', '$email', '$password')";
               if (mysqli_query($conn, $query)) {
                 echo "New record created successfully";
+                echo "Login Successful... Redirecting";
+                header("Location: profilePage.php");
               } else {
                 echo "Error: " . $query . "<br>" . mysqli_error($conn);
               }
@@ -71,7 +88,7 @@
           </div>
         </div>
         <p class="SignUp">Signing up as an individual? <a href="SignUp.php">Click Here</a></p>
-        <p class="login">Already have an account? <a href="index.php">Login Now</a></p>
+        <p class="login">Already have an account? <a href="login.php">Login Now</a></p>
       </div>
 
     </div>

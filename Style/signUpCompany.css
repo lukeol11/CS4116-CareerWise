@@ -14,23 +14,6 @@
 	color: #fff
 }
 
-#signUpPage .left-box {
-    display: inline-block;
-    width: 40%;
-    text-align: center;
-    border-right: white 0.2em solid;
-    margin-top: 1em;
-	vertical-align: top;
-}
-
-#signUpPage .right-box {
-    display: inline-block;
-    width: 40%;
-    text-align: center;
-    margin-top: 1em;
-	vertical-align: top;
-}
-
 #signUpPage .input-box {
   border-radius: 0.75em;
   border: 1px solid #D9D9D9;
@@ -40,7 +23,8 @@
   -webkit-box-shadow: none;
 }
 
-#signUpPage .left-box button {
+
+#signUpPage button {
     background-image: linear-gradient(to bottom,#3CABC3,#3497ad);
     background-color: #3696ac;
     font-size: 1em;
@@ -51,14 +35,14 @@
     justify-content: center;
 }
 
-#signUpPage .left-box button span {
+#signUpPage button span {
     display: inline-block;
     width: 0px;
     overflow: hidden;
     transition: 0.5s;
 }
 
-#signUpPage .left-box button:hover span{
+#signUpPage button:hover span{
     width: 30px;
 
 }
