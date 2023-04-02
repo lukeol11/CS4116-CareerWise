@@ -38,7 +38,7 @@
               <input type="password" name="password" placeholder="Create Password" required class="input-box">
               <input type="password" name="confirmPassword" placeholder="Confirm Password" required class="input-box">
               <div class="checkbox">
-                <input type="checkbox" id="terms">
+                <input type="checkbox" id="terms" required>
                 <label for "terms"> I accept the terms and conditions.</label>
               </div>
               <button class="btn-primary" name="submit" type="submit"> Create! <span> &#x27f6; </span></button>
