@@ -27,13 +27,13 @@
 
     <div id="content">
       <div id="signUpPage">
-        <h1>Create an account</h1>
+        <h1>Create an company account</h1>
         <div class="signup-box">
-          <div class="left-box">
+          <div class="container">
             <h1> Basic Details</h1>
             <form method="POST">
-              <input type="text" name="firstName" placeholder="First Name" required class="input-box">
-              <input type="text" name="lastName" placeholder="Last Name" required class="input-box">
+              <input type="text" name="companyName" placeholder="Company Name" required class="input-box">
+              <input type="text" name="contactName" placeholder="Contact Name" required class="input-box">
               <input type="email" name="email" placeholder="Email" required class="input-box">
               <input type="password" name="password" placeholder="Create Password" required class="input-box">
               <div class="checkbox">
@@ -55,12 +55,12 @@
             }
 
             if (isset($_POST['submit'])) {
-              $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
-              $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
+              $companyName = mysqli_real_escape_string($conn, $_POST['companyName']);
+              $contactName = mysqli_real_escape_string($conn, $_POST['contactName']);
               $email = mysqli_real_escape_string($conn, $_POST['email']);
               $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-              $query = "INSERT INTO users (firstName, lastName, email, password) VALUES ('$firstName', '$lastName', '$email', '$password')";
+              $query = "INSERT INTO business (companyName, contactName, email, password) VALUES ('$companyName', '$contactName', '$email', '$password')";
               if (mysqli_query($conn, $query)) {
                 echo "New record created successfully";
               } else {
@@ -69,15 +69,8 @@
             }
             ?>
           </div>
-          <div class="right-box">
-            <h1> Jobs & Education</h1>
-            <form>
-              <input type="text" placeholder="Company" required class="input-box">
-              <input type="text" placeholder="Position" required class="input-box">
-            </form>
-          </div>
         </div>
-        <p class="signUpCompany">Signing up as a company?<a href="signUpCompany.php"> Company Sign Up</a></p>
+        <p class="SignUp">Signing up as an individual? <a href="SignUp.php">Click Here</a></p>
         <p class="login">Already have an account? <a href="index.php">Login Now</a></p>
       </div>
 
