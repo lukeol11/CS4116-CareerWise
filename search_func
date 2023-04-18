@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search_functionality</title>
+</head>
+<body>
+<div class="bg-light border-left col-2 text-center" id="sidebar-wrapper">
+    <div class="sidebar-heading">Start Bootstrap </div>
+    <div class="list-group list-group-flush">
+    <?php if(isset($_SESSION['user_id'])){ echo '<a href="' . $_ENV['site_home'] . '/logout.php" class="list-group-item list-group-item-action bg-light">Logout</a>'; } ?>
+        <a href="<?php echo $_ENV['site_home'] ?>" companies="list-group-item list-group-item-action bg-light">companies</a>
+        <a href="<?php echo $_ENV['site_home'] ?>profile" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="<?php echo $_ENV['site_home'] ?>people" class="list-group-item list-group-item-action bg-light">people</a>
+        <?php if($_SESSION['admin'] == 1){ echo '<a href="{' . $_ENV['site_home'] . '/admin" class="list-group-item list-group-item-action bg-light">Admin</a>'; } ?>
+    </div>
+</div>
+</body>
+</html>
