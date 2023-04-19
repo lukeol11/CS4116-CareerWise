@@ -58,13 +58,46 @@
                 </div>
                 <div id="body">
                     <div id="left">
-                        <h3>Employment History
-                        </h3>
-                        <p>{{education}}</p>
+                        <h3>Employment History</h3>
+                        <?php
+                        $sql = "SELECT * FROM employment_history WHERE user_id = $userId";
+                        $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                        $result = mysqli_query($connection, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<p>";
+                                echo "Company: " . $row["company"] . "<br>";
+                                echo "Position: " . $row["position"] . "<br>";
+                                echo $row["start_date"] . " - " . $row["end_date"] . "<br>";
+                                echo "</p>";
+                            }
+                        } else {
+                            echo "No Employment History";
+                        }
+                        mysqli_close($connection);
+                        ?>
                     </div>
                     <div id="right">
                         <h3>Education & Qualifications</h3>
-                        <p>{{educationQualifications}}</p>
+                        <?php
+                        $sql = "SELECT * FROM education_history WHERE user_id = $userId";
+                        $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                        $result = mysqli_query($connection, $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<p>";
+                                echo "School: " . $row["school"] . "<br>";
+                                echo "Course: " . $row["course"] . "<br>";
+                                echo $row["start_date"] . "-" . $row["end_date"] . "<br>";
+                                echo "</p>";
+                            }
+                        } else {
+                            echo "No Education History";
+                        }
+                        mysqli_close($connection);
+                        ?>
                     </div>
 
 
@@ -79,11 +112,31 @@
         if ($_SESSION['admin'] == true) {
             echo '<div id="content"><div id="adminControls">
             <h2>Admin Controls</h2>
-            <button type="button" class="btn btn-primary">Ban User</button>
-            <button type="button" class="btn btn-primary">Pardon User</button>
-            <button type="button" class="btn btn-primary">Make Admin</button>
-            <button type="button" class="btn btn-primary">Make User</button>
+            <form method="post">
+            <button type="submit" class="btn btn-primary" name="ban">Ban User</button>
+            <button type="submit" class="btn btn-primary" name="pardon">Pardon User</button>
+            <button type="submit" class="btn btn-primary" name="promote">Make Admin</button>
+            <button type="submit" class="btn btn-primary" name="demote">Make User</button>
+            </form>
         </div></div>';
+            if (isset($_POST['ban'])) {
+                $sql = "SELECT * FROM banned WHERE user_id = $userId";
+                $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                $result = mysqli_query($connection, $sql);
+                // if the user is not already banned, insert a new row into the "banned" table
+                if (mysqli_num_rows($result) == 0) {
+                    $sql = "INSERT INTO banned (user_id, company, company_id) VALUES ($userId, null, null)";
+                    mysqli_query($connection, $sql);
+                }
+                mysqli_close($connection);
+            }
+            if (isset($_POST['pardon'])) {
+                $sql = "DELETE FROM banned WHERE user_id = $userId";
+                $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                $result = mysqli_query($connection, $sql);
+                mysqli_query($connection, $sql);
+                mysqli_close($connection);
+            }
         }
         ?>
     </div>
