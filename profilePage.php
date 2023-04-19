@@ -137,6 +137,38 @@
                 mysqli_query($connection, $sql);
                 mysqli_close($connection);
             }
+            if (isset($_POST['promote'])) {
+                // Check if the user already exists in the user_type table
+                $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                $sql = "SELECT * FROM user_type WHERE user_id=$userId";
+                $result = mysqli_query($connection, $sql);
+                // If the user exists, update the user_type column to "Admin"
+                if (mysqli_num_rows($result) > 0) {
+                    $sql = "UPDATE user_type SET User_type='Admin' WHERE user_id=$userId";
+                    mysqli_query($connection, $sql);
+                } else {
+                    // If the user does not exist, insert a new row into the user_type table with User_type as "Admin"
+                    $sql = "INSERT INTO user_type (user_id, Email, User_type) VALUES ($userId, null, 'Admin')";
+                    mysqli_query($connection, $sql);
+                }
+                mysqli_close($connection);
+            }
+            if (isset($_POST['demote'])) {
+                // Check if the user already exists in the user_type table
+                $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                $sql = "SELECT * FROM user_type WHERE user_id=$userId";
+                $result = mysqli_query($connection, $sql);
+                // If the user exists, update the user_type column to "User"
+                if (mysqli_num_rows($result) > 0) {
+                    $sql = "UPDATE user_type SET User_type='User' WHERE user_id=$userId";
+                    mysqli_query($connection, $sql);
+                } else {
+                    // If the user does not exist, insert a new row into the user_type table with User_type as "User"
+                    $sql = "INSERT INTO user_type (user_id, Email, User_type) VALUES ($userId, null, 'User')";
+                    mysqli_query($connection, $sql);
+                }
+                mysqli_close($connection);
+            }
         }
         ?>
     </div>
