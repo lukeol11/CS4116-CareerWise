@@ -25,7 +25,8 @@
         </div>
 
         <div id="content">
-        <div id="people">
+        <div id="opportunities">
+            <h2> Opportunities </h2>
             <?php
             $hostName = "sql109.epizy.com";
             $userName = "epiz_33784251";

@@ -27,11 +27,11 @@
 
     <div id="content">
       <div id="signUpPage">
-       <h1>Create An Account</h1>
-       <form method="POST">
-        <div class="signup-box">
-          <div class="left-box">
-            <h1> Basic Details</h1>
+        <h1>Create An Account</h1>
+        <form method="POST">
+          <div class="signup-box">
+            <div class="left-box">
+              <h1> Basic Details</h1>
               <input type="text" name="firstName" placeholder="First Name" required>
               <input type="text" name="lastName" placeholder="Last Name" required>
               <input type="email" name="email" placeholder="Email" required>
@@ -43,22 +43,38 @@
               </div>
 
 
-          </div>
-          <div class="right-box">
-            <h1> Jobs & Education</h1>
-            <h3>Previous Company</h3>
+<<<<<<< Updated upstream
+            </div>
+            <div class="right-box">
+              <h1> Jobs & Education</h1>
+              <h3>Previous Company</h3>
               <input type="text" name="company" placeholder="Company" required>
               <input type="text" name="position" placeholder="Position" required>
               <input type="date" name="employment_start_date" placeholder="Start" required>
               <input type="date" name="employment_end_date" placeholder="End" required>
-            <h3>Education</h3>
+              <h3>Education</h3>
               <input type="text" name="school" placeholder="University" required>
               <input type="text" name="course" placeholder="Course" required>
               <input type="date" name="education_start_date" placeholder="Start" required>
               <input type="date" name="education_end_date" placeholder="End" required>
+            </div>
+=======
           </div>
-        </div>
-        <button class="btn-primary" name="submit" type="submit"> Create! <span> &#x27f6; </span></button>
+          <div class="right-box">
+            <h1> Jobs & Education</h1>
+            <h3>Previous Company</h3>
+              <input type="text" name="company" placeholder="Company">
+              <input type="text" name="position" placeholder="Position">
+              <input type="date" name="employment_start_date" placeholder="Start">
+              <input type="date" name="employment_end_date" placeholder="End">
+            <h3>Education</h3>
+              <input type="text" name="school" placeholder="University">
+              <input type="text" name="course" placeholder="Course">
+              <input type="date" name="education_start_date" placeholder="Start">
+              <input type="date" name="education_end_date" placeholder="End">
+>>>>>>> Stashed changes
+          </div>
+          <button class="btn-primary" name="submit" type="submit"> Create! <span> &#x27f6; </span></button>
         </form>
         <p class="signUpCompany">Signing up as a company? <a href="signUpCompany.php">Company Sign Up</a></p>
         <p class="login">Already have an account? <a href="login.php">Login Now</a></p>
@@ -121,7 +137,7 @@
     mysqli_begin_transaction($conn);
 
     // Insert into users table
-    $query1 = "INSERT INTO users (firstName, lastName, email, password) VALUES ('$firstName', '$lastName', '$email', '$password')";
+    $query1 = "INSERT INTO users (firstName, lastName, email, company, password) VALUES ('$firstName', '$lastName', '$email', '$company', '$password')";
     if (!mysqli_query($conn, $query1)) {
       echo "Error: " . $query1 . "<br>" . mysqli_error($conn);
       mysqli_rollback($conn);
@@ -147,13 +163,11 @@
     // Commit transaction
     mysqli_commit($conn);
 
-    session_start();
-    $_SESSION['user_id'] = $user_id;
-    $_SESSION['user_id']=mysqli_insert_id($conn);
     echo "New record created successfully";
-    echo "Login Successful... Redirecting";
-    header("Location: profilePage.php");
+
+    header("Location: login.php");
   }
   ?>
-</body
+</body>
+
 </html>
