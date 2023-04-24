@@ -92,7 +92,6 @@
 
                         if ($result > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo "Company: " . $row["company"] . "<br>";
                                 echo "Position: " . $row["position"] . "<br>";
                                 echo "Salary Range: " . $row["salary_range"] . "<br>";
                                 echo "<br><br>";
