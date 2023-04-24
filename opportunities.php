@@ -61,8 +61,10 @@
                     echo "<br><br>";
                 }
             }
-
-            if ($_SESSION['user_id'] == $company_id) {
+            
+            session_start();
+            $company_id = $_SESSION['company_id'];
+            if ($company_id != NULL) {
                 echo "<a href='createVacancy.php'>Create Vacancy</a>";
             }
 
