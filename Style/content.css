@@ -8,6 +8,7 @@ a, p, h1, h2, h3, h4, h5, h6, label {
 div.navbar-inner a.brand {
     font-weight: bolder !important;
 }
+
 div#content {
     background-color: #BDBDBD;
     margin: 5em;

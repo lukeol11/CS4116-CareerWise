@@ -19,18 +19,19 @@
       <script src="js/bootstrap.min.js"></script>
 
       <div id="menu">
+        <?php include navbar.php; ?>
         <div class="navbar">
           <div class="navbar-inner">
-            <a class="brand" href="index.html" style="border-right: none"
-              >careerWise</a
-            >
+            <a class="brand" href="index.php" style="border-right: none">careerWise</a>
+            <a class="brand" href="login.php" style="border-right: none">Login</a>
+            <a class="brand" href="SignUp.php" style="border-right: none">Register</a>
           </div>
         </div>
       </div>
 
       <div id="content" style="text-align:center; color: white; line-height: 2em;">
                 <h2>Welcome!</h2>
-                <p style="font-size: 2em;  text-align: center">
+                <p>
                   CareerWise is a business-based social networking platform. The
                   purpose of the site is to allow registered members to create
                   networks with people they know and have professional
@@ -40,7 +41,6 @@
                   have an interest in
                 </p>
                 </br>
-                <a href="login.php" style="font-size: 2em">Login/Register</a>
         </div>
     </div>
   </body>
