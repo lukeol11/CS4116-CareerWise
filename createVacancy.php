@@ -23,11 +23,7 @@
     <script src="js/bootstrap.min.js"></script>
 
     <div id="menu">
-      <div class="navbar">
-        <div class="navbar-inner">
-          <a class="brand" href="index.html" style="border-right: none;">careerWise</a>
-        </div>
-      </div>
+      <?php include 'navBar.php'; ?>
     </div>
 
     <div id="content">
