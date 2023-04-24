@@ -41,25 +41,8 @@
                 <input type="checkbox" id="terms" required>
                 <label for="terms"> I accept the terms and conditions.</label>
               </div>
-
-
-<<<<<<< Updated upstream
             </div>
-            <div class="right-box">
-              <h1> Jobs & Education</h1>
-              <h3>Previous Company</h3>
-              <input type="text" name="company" placeholder="Company" required>
-              <input type="text" name="position" placeholder="Position" required>
-              <input type="date" name="employment_start_date" placeholder="Start" required>
-              <input type="date" name="employment_end_date" placeholder="End" required>
-              <h3>Education</h3>
-              <input type="text" name="school" placeholder="University" required>
-              <input type="text" name="course" placeholder="Course" required>
-              <input type="date" name="education_start_date" placeholder="Start" required>
-              <input type="date" name="education_end_date" placeholder="End" required>
-            </div>
-=======
-          </div>
+
           <div class="right-box">
             <h1> Jobs & Education</h1>
             <h3>Previous Company</h3>
@@ -72,7 +55,7 @@
               <input type="text" name="course" placeholder="Course">
               <input type="date" name="education_start_date" placeholder="Start">
               <input type="date" name="education_end_date" placeholder="End">
->>>>>>> Stashed changes
+          </div>
           </div>
           <button class="btn-primary" name="submit" type="submit"> Create! <span> &#x27f6; </span></button>
         </form>
@@ -95,6 +78,8 @@
   }
 
   if (isset($_POST['submit'])) {
+
+    $user_id = uniqid();
     //information for user
     $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
     $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
@@ -102,6 +87,8 @@
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $confirmPassword = mysqli_real_escape_string($conn, $_POST['confirmPassword']);
     //information for employment_history
+    $employmentId = mysqli_real_escape_string($conn, $_POST['employment_id']);
+    $companyId = mysqli_real_escape_string($conn, $_POST['company_id']);
     $company = mysqli_real_escape_string($conn, $_POST['company']);
     $position = mysqli_real_escape_string($conn, $_POST['position']);
     $employment_start_date = mysqli_real_escape_string($conn, $_POST['employment_start_date']);
@@ -137,7 +124,7 @@
     mysqli_begin_transaction($conn);
 
     // Insert into users table
-    $query1 = "INSERT INTO users (firstName, lastName, email, company, password) VALUES ('$firstName', '$lastName', '$email', '$company', '$password')";
+    $query1 = "INSERT INTO users (user_id, firstName, lastName, email, company, password) VALUES ('$user_id', '$firstName', '$lastName', '$email', '$company', '$password')";
     if (!mysqli_query($conn, $query1)) {
       echo "Error: " . $query1 . "<br>" . mysqli_error($conn);
       mysqli_rollback($conn);
@@ -145,7 +132,7 @@
     }
 
     // Insert into employment_history table
-    $query2 = "INSERT INTO employment_history (company, position, start_date, end_date) VALUES ('$company', '$position', '$employment_start_date', '$employment_end_date')";
+    $query2 = "INSERT INTO employment_history (employment_id, user_id, company_id, company, position, start_date, end_date) VALUES (null, '$user_id', '$companyId', '$company', '$position', '$employment_start_date', '$employment_end_date')";
     if (!mysqli_query($conn, $query2)) {
       echo "Error: " . $query2 . "<br>" . mysqli_error($conn);
       mysqli_rollback($conn);
@@ -153,7 +140,7 @@
     }
 
     // Insert into education_history table
-    $query3 = "INSERT INTO education_history (school, course, start_date, end_date) VALUES ('$school', '$course', '$education_start_date', '$education_end_date')";
+    $query3 = "INSERT INTO education_history (course_id, user_id, school, course, start_date, end_date) VALUES ('$courseId', '$user_id', '$school', '$course', '$education_start_date', '$education_end_date')";
     if (!mysqli_query($conn, $query3)) {
       echo "Error: " . $query3 . "<br>" . mysqli_error($conn);
       mysqli_rollback($conn);
