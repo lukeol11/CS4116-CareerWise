@@ -43,6 +43,7 @@
               </div>
 
 
+<<<<<<< Updated upstream
             </div>
             <div class="right-box">
               <h1> Jobs & Education</h1>
@@ -57,6 +58,21 @@
               <input type="date" name="education_start_date" placeholder="Start" required>
               <input type="date" name="education_end_date" placeholder="End" required>
             </div>
+=======
+          </div>
+          <div class="right-box">
+            <h1> Jobs & Education</h1>
+            <h3>Previous Company</h3>
+              <input type="text" name="company" placeholder="Company">
+              <input type="text" name="position" placeholder="Position">
+              <input type="date" name="employment_start_date" placeholder="Start">
+              <input type="date" name="employment_end_date" placeholder="End">
+            <h3>Education</h3>
+              <input type="text" name="school" placeholder="University">
+              <input type="text" name="course" placeholder="Course">
+              <input type="date" name="education_start_date" placeholder="Start">
+              <input type="date" name="education_end_date" placeholder="End">
+>>>>>>> Stashed changes
           </div>
           <button class="btn-primary" name="submit" type="submit"> Create! <span> &#x27f6; </span></button>
         </form>
