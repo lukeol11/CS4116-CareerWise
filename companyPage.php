@@ -71,7 +71,7 @@
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<p>";
                                 echo "Name: " . $row["FirstName"] . " " . $row["LastName"] . "<br>";
-                                echo "<a href='profilePage.php?userId=" . $row["user_id"] . "'>View Profile</a>";
+                                echo "<a href='profilePage.php?userid=" . $row["user_id"] . "'>View Profile</a>";
                                 echo "</p>";
                             }
                         } else {
