@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>careerWise | People</title>
+    <title>careerWise | Comapnies</title>
     <link rel="stylesheet" type="text/css" href="Style/content.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -19,8 +19,8 @@
         </div>
 
         <div id="content">
-            <div id="people">
-                <h2> People </h2>
+            <div id="companies">
+                <h2> Companies </h2>
                 <?php
                 $hostName = "sql109.epizy.com";
                 $userName = "epiz_33784251";
@@ -28,13 +28,12 @@
                 $databaseName = "epiz_33784251_cs4116";
                 $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
 
-                $query = "SELECT * FROM users";
+                $query = "SELECT * FROM business";
                 $result = mysqli_query($connection, $query);
 
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "Name: " . $row["FirstName"] . " " . $row["LastName"] . "<br>";
                     echo "Company: " . $row["company"] . "<br>";
-                    echo "<a href='profilePage.php?userid=" . $row["user_id"] . "'>View Profile</a>";
+                    echo "<a href='companyPage.php?companyid=" . $row["company_id"] . "'>View Profile</a>";
                     echo "<br><br>";
                 }
 

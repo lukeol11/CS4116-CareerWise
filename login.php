@@ -53,7 +53,7 @@
                 $connection = mysqli_connect($hostName, $email, $password, $databaseName);
                 $email = mysqli_real_escape_string($connection, $_POST['email']);
                 $password = mysqli_real_escape_string($connection, $_POST['password']);
-                $query = "SELECT users.*, user_type.User_Type as user_type FROM users LEFT JOIN user_type ON users.user_id = user_type.user_id WHERE users.email = '$email' AND users.company = '$password'";
+                $query = "SELECT users.*, user_type.User_Type as user_type FROM users LEFT JOIN user_type ON users.user_id = user_type.user_id WHERE users.email = '$email' AND users.password = '$password'";
                 $result = mysqli_query($connection, $query);
                 if (mysqli_num_rows($result) == 1) {
                   $row = mysqli_fetch_assoc($result);
@@ -92,9 +92,6 @@
       </div>
     </div>
   </div>
-<<<<<<< Updated upstream
 </body>
-=======
-</body
->>>>>>> Stashed changes
+</body>
 </html>

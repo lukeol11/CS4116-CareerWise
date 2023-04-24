@@ -25,7 +25,8 @@
         </div>
 
         <div id="content">
-        <div id="people">
+        <div id="opportunities">
+            <h2> Opportunities </h2>
             <?php
             $hostName = "sql109.epizy.com";
             $userName = "epiz_33784251";
@@ -35,13 +36,12 @@
 
             if(isset($_POST['submit'])){
                 $search = $_POST['search'];
-                $query = "SELECT v.vacancy_id, b.company, v.position, v.salary_range FROM vacancies v JOIN business b ON v.company_id = b.company_id WHERE v.position LIKE '%$search%' OR v.salary_range LIKE '%$search%' OR b.company LIKE '%$search%' OR v.vacancy_id LIKE '%$search%'";
+                $query = "SELECT b.company, v.position, v.salary_range FROM vacancies v JOIN business b ON v.company_id = b.company_id WHERE v.position LIKE '%$search%' OR v.salary_range LIKE '%$search%' OR b.company LIKE '%$search%'";
                 $result = mysqli_query($connection, $query);
                 $queryResult = mysqli_num_rows($result);
                 
                 if($queryResult > 0){
                     while ($row = mysqli_fetch_assoc($result)) {
-                        echo "Vacancy: " . $row["vacancy_id"] . "<br>";
                         echo "Company: " . $row["company"] . "<br>";
                         echo "Position: " . $row["position"] . "<br>";
                         echo "Salary Range: " . $row["salary_range"] . "<br>";
@@ -51,11 +51,10 @@
                     echo "There are no results matching your search!";
                 }
             } else {
-                $query = "SELECT v.vacancy_id, b.company, v.position, v.salary_range FROM vacancies v JOIN business b ON v.company_id = b.company_id";
+                $query = "SELECT b.company, v.position, v.salary_range FROM vacancies v JOIN business b ON v.company_id = b.company_id";
                 $result = mysqli_query($connection, $query);
             
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "Vacancy: " . $row["vacancy_id"] . "<br>";
                     echo "Company: " . $row["company"] . "<br>";
                     echo "Position: " . $row["position"] . "<br>";
                     echo "Salary Range: " . $row["salary_range"] . "<br>";
@@ -76,7 +75,6 @@
             ?>
         </div>
         <form method="post" class="search-form">
-            <label>Search</label>
             <input type="text" name="search">
             <input type="submit" name="submit">
         </form>
