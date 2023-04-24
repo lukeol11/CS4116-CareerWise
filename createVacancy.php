@@ -11,11 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=K2D:wght@100&display=swap" rel="stylesheet" />
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
   <style>
-        .search-form {
-            display: flex;
-            justify-content: center;
-        }
-    </style>
+    .search-form {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -33,22 +33,22 @@
 
     <div id="content">
       <div id="signUpPage">
-       <h1>Job Vacancy</h1>
-       <form method="POST">
-  <div class="form-group">
-    <label for="company">Company</label>
-    <input type="text" class="form-control" id="company" name="company" required>
-  </div>
-  <div class="form-group">
-    <label for="position">Position</label>
-    <input type="text" class="form-control" id="position" name="position" required>
-  </div>
-  <div class="form-group">
-    <label for="salary_range">Salary Range</label>
-    <input type="text" class="form-control" id="salary_range" name="salary_range" required>
-  </div>
-  <button class="btn btn-primary" name="submit" type="submit">Submit</button>
-</form>
+        <h1>Job Vacancy</h1>
+        <form method="POST">
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" class="form-control" id="company" name="company" required>
+          </div>
+          <div class="form-group">
+            <label for="position">Position</label>
+            <input type="text" class="form-control" id="position" name="position" required>
+          </div>
+          <div class="form-group">
+            <label for="salary_range">Salary Range</label>
+            <input type="text" class="form-control" id="salary_range" name="salary_range" required>
+          </div>
+          <button class="btn btn-primary" name="submit" type="submit">Submit</button>
+        </form>
 
       </div>
     </div>
@@ -66,61 +66,39 @@
   }
 
   if (isset($_POST['submit'])) {
-    //information for user
     $company = mysqli_real_escape_string($conn, $_POST['company']);
     $position = mysqli_real_escape_string($conn, $_POST['position']);
     $salary_range = mysqli_real_escape_string($conn, $_POST['salary_range']);
 
-    // //check if the salary_range exists in the users database
-    // $query = "SELECT * FROM users WHERE salary_range = '$salary_range'";
-    // $result = mysqli_query($conn, $query);
-    // if (mysqli_num_rows($result) > 0) {
-    //   // The salary_range already exists in the database
-    //   echo "An account with this salary_range already exists";
-    //   exit();
-    // }
+    // Retrieve the company_id from the business table based on the provided company name
+    $sql = "SELECT company_id FROM business WHERE company = '$company'";
+    $result = mysqli_query($conn, $sql);
 
-    // // Check if passwords match
-    // if ($password != $confirmPassword) {
-    //   echo "Error: Passwords do not match";
-    //   exit();
-    // }
+    if ($result && mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_assoc($result);
+      $company_id = $row['company_id'];
 
-    // // Check password length
-    // if (strlen($password) < 8) {
-    //   echo "Error: Password must be at least 8 characters long";
-    //   exit();
-    // }
+      session_start();
+      $userId = $_SESSION['user_id'];
 
-    // Start transaction
-    mysqli_begin_transaction($conn);
+      // Insert the new record into the vacancies table using the retrieved company_id
+      $sql = "INSERT INTO vacancies (company_id, position, salary_range) VALUES ('$company_id', '$position', '$salary_range')";
+      $result = mysqli_query($conn, $sql);
 
-    // Insert into users table
-    $query1 = "INSERT INTO vacancies (position, salary_range) VALUES ('$position', '$salary_range')";
-    if (!mysqli_query($conn, $query1)) {
-      echo "Error: " . $query1 . "<br>" . mysqli_error($conn);
-      mysqli_rollback($conn);
-      exit();
+      if ($result) {
+        echo "Post Made successfully!";
+        echo "Return to <a href='opportunities.php'>Opportunities</a>";
+      } else {
+        echo "Error: " . mysqli_error($conn) . " (" . mysqli_errno($conn) . ")";
+      }
+    } else {
+      echo "Error: Company not found";
     }
 
-    // Insert into employment_history table
-    $query2 = "INSERT INTO business (company) VALUES ('$company')";
-    if (!mysqli_query($conn, $query2)) {
-      echo "Error: " . $query2 . "<br>" . mysqli_error($conn);
-      mysqli_rollback($conn);
-      exit();
-    }
-
-    // Commit transaction
-    mysqli_commit($conn);
-
-    // session_start();
-    // $_SESSION['user_id'] = $user_id;
-    // $_SESSION['user_id']=mysqli_insert_id($conn);
-    // echo "New record created successfully";
-    // echo "Login Successful... Redirecting";
-    // header("Location: profilePage.php");
+    mysqli_close($conn);
   }
   ?>
-</body
+
+</body>
+
 </html>
