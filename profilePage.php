@@ -77,7 +77,43 @@
                         }
                         mysqli_close($connection);
                         ?>
+
+                        <!-- if user admin or owner of page allow adding of positions -->
+                        <?php
+                        session_start();
+                        if ($_SESSION['admin'] == true || $userId == $_SESSION['user_id']) {
+                            echo '<h3> Add Employment History</h3>
+                            <form method="post">
+                                <input type="text" name="company" placeholder="Company" required>
+                                <input type="text" name="position" placeholder="Position" required>
+                                <input type="date" name="employment_start_date" placeholder="Start" required>
+                                <input type="date" name="employment_end_date" placeholder="End" required>
+                                <button type="submit" class="btn btn-primary" name="addEmployment">Add +</button>
+                            </form>';
+                        }
+
+                        if (isset($_POST['addEmployment'])) {
+                            $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                            $company = mysqli_real_escape_string($connection, $_POST['company']);
+                            $position = mysqli_real_escape_string($connection, $_POST['position']);
+                            $start_date = mysqli_real_escape_string($connection, $_POST['employment_start_date']);
+                            $end_date = mysqli_real_escape_string($connection, $_POST['employment_end_date']);
+
+                            $sql = "INSERT INTO employment_history (user_id, company_id, company, position, start_date, end_date) VALUES ('$userId', 0, '$company', '$position', '$start_date', '$end_date')";
+                            $result = mysqli_query($connection, $sql);
+
+                            if ($result) {
+                                echo "Data inserted successfully!";
+                            } else {
+                                echo "Error: " . mysqli_error($connection) . " (" . mysqli_errno($connection) . ")";
+                            }
+                            mysqli_close($connection);
+                        }
+                        ?>
+
                     </div>
+
+
                     <div id="right">
                         <h3>Education & Qualifications</h3>
                         <?php
@@ -97,6 +133,39 @@
                             echo "No Education History";
                         }
                         mysqli_close($connection);
+                        ?>
+
+                        <!-- if user admin or owner of page allow adding of education -->
+                        <?php
+                        session_start();
+                        if ($_SESSION['admin'] == true || $userId == $_SESSION['user_id']) {
+                            echo '<h3> Add Education & Qualifications</h3>
+                            <form method="post">
+                                <input type="text" name="school" placeholder="University" required>
+                                <input type="text" name="course" placeholder="Course" required>
+                                <input type="date" name="education_start_date" placeholder="Start" required>
+                                <input type="date" name="education_end_date" placeholder="End" required>
+                                <button type="submit" class="btn btn-primary" name="addEducation">Add +</button>
+                            </form>';
+                        }
+
+                        if (isset($_POST['addEducation'])) {
+                            $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                            $school = mysqli_real_escape_string($connection, $_POST['school']);
+                            $course = mysqli_real_escape_string($connection, $_POST['course']);
+                            $start_date = mysqli_real_escape_string($connection, $_POST['education_start_date']);
+                            $end_date = mysqli_real_escape_string($connection, $_POST['education_end_date']);
+
+                            $sql = "INSERT INTO education_history (course_id, user_id, school, course, start_date, end_date) VALUES (null, '$userId', '$school', '$course', '$start_date', '$end_date')";
+                            $result = mysqli_query($connection, $sql);
+
+                            if ($result) {
+                                echo "Data inserted successfully!";
+                            } else {
+                                echo "Error: " . mysqli_error($connection) . " (" . mysqli_errno($connection) . ")";
+                            }
+                            mysqli_close($connection);
+                        }
                         ?>
                     </div>
 
