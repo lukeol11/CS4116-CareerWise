@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-  <title>careerWise | Sign Up</title>
+  <title>careerWise | Create Vacancy</title>
   <link rel="stylesheet" type="text/css" href="Style/menu.css" />
   <link rel="stylesheet" type="text/css" href="Style/content.css" />
-  <link rel="stylesheet" href="Style/SignUp.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=K2D:wght@100&display=swap" rel="stylesheet" />
@@ -32,7 +31,7 @@
     </div>
 
     <div id="content">
-      <div id="signUpPage">
+      <div id="createVacancy">
         <h1>Job Vacancy</h1>
         <form method="POST">
           <div class="form-group">
