@@ -53,8 +53,12 @@
                 $connection = mysqli_connect($hostName, $email, $password, $databaseName);
                 $email = mysqli_real_escape_string($connection, $_POST['email']);
                 $password = mysqli_real_escape_string($connection, $_POST['password']);
+
+                // Check if the credentials are for a user
                 $query = "SELECT users.*, user_type.User_Type as user_type FROM users LEFT JOIN user_type ON users.user_id = user_type.user_id WHERE users.email = '$email' AND users.password = '$password'";
                 $result = mysqli_query($connection, $query);
+
+                // if they are user credientials
                 if (mysqli_num_rows($result) == 1) {
                   $row = mysqli_fetch_assoc($result);
                   $user_id = $row['user_id'];
@@ -71,11 +75,23 @@
                     $_SESSION['admin'] = false;
                   }
 
-
-                  echo "Login Successful... Redirecting";
                   header("Location: profilePage.php");
+
+                  //else if they are business credentials
                 } else {
-                  echo "Login Failed";
+                  $query2 = "SELECT * from business WHERE email = '$email' AND password = '$password'";
+                  $result2 = mysqli_query($connection, $query2);
+                  if (mysqli_num_rows($result2) == 1) {
+                    $row = mysqli_fetch_assoc($result2);
+                    $user_id = $row['company_id'];
+
+                    // Add the user ID to the session
+                    session_start();
+                    $_SESSION['company_id'] = $user_id;
+                    header("Location: companyPage.php");
+                  } else {
+                    echo "Login Failed";
+                  }
                 }
               }
               ?>
@@ -87,5 +103,5 @@
     </div>
   </div>
 </body>
-</body>
+
 </html>
