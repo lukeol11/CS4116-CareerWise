@@ -33,7 +33,7 @@
 
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "Company: " . $row["company"] . "<br>";
-                    echo "<a href='companyPage.php?userid=" . $row["user_id"] . "'>View Profile</a>";
+                    echo "<a href='companyPage.php?companyid=" . $row["company_id"] . "'>View Profile</a>";
                     echo "<br><br>";
                 }
 
