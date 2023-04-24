@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "bmewburn.vscode-intelephense-client",
+        "sonarsource.sonarlint-vscode",
+        "mohd-akram.vscode-html-format"
+    ]
+}
