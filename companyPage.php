@@ -76,7 +76,7 @@
                                 echo "</p>";
                             }
                         } else {
-                            echo "No Employees";
+                            echo "No Employees :(";
                         }
                         mysqli_close($connection);
                         ?>
