@@ -35,13 +35,22 @@
       <div id="signUpPage">
        <h1>Job Vacancy</h1>
        <form method="POST">
-              <input type="text" name="company" placeholder="Company" required>
-              <input type="text" name="position" placeholder="Position" required>
-              <input type="text" name="salary_range" placeholder="salary_range" required>
-        <button class="btn-primary" name="submit" type="submit"> Submit</button>
-        </form>
-      </div>
+  <div class="form-group">
+    <label for="company">Company</label>
+    <input type="text" class="form-control" id="company" name="company" required>
+  </div>
+  <div class="form-group">
+    <label for="position">Position</label>
+    <input type="text" class="form-control" id="position" name="position" required>
+  </div>
+  <div class="form-group">
+    <label for="salary_range">Salary Range</label>
+    <input type="text" class="form-control" id="salary_range" name="salary_range" required>
+  </div>
+  <button class="btn btn-primary" name="submit" type="submit">Submit</button>
+</form>
 
+      </div>
     </div>
   </div>
   <?php
