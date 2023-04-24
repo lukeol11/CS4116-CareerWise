@@ -11,15 +11,20 @@
 
 ## Sample Accounts
 
-### Admin
+### Admin User Account
 
 - Email: br@gmail.com
 - Password: Careerwise
 
-### Sample
+### Standard User Account
 
 - Email: pp@gmail.com
 - Password: coca-cola
+
+### Business Account
+
+- Email: cw@gmail.com
+- Password: cw
 
 ## Contributors
 
