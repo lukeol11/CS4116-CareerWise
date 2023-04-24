@@ -64,6 +64,15 @@
                   session_start();
                   $_SESSION['user_id'] = $user_id;
 
+                  $query2 = "SELECT * FROM business WHERE email = '$email'";
+                  $result2 = mysqli_query($connection, $query);
+                  if (mysqli_num_rows($result2) == 1) {
+                    $_SESSION['business_id'] = $user_id;
+                  } else {
+                    $_SESSION['user_id'] = $user_id;
+                  }
+
+
                   // Check if the user is an admin
                   if ($user_type == 'Admin') {
                     $_SESSION['admin'] = true;

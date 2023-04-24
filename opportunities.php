@@ -63,6 +63,14 @@
                 }
             }
             
+            $email = $_SESSION['email'];
+            $query = "SELECT * FROM business WHERE email = '$email'";
+            $result = mysqli_query($connection, $query);
+            $queryResult = mysqli_num_rows($result);
+            if($queryResult > 0){
+                echo "<a href='createVacancy.php'>Create Vacancy</a>";
+            }
+            
             // Close the database connection
             mysqli_close($connection);
             ?>
@@ -72,7 +80,6 @@
             <input type="text" name="search">
             <input type="submit" name="submit">
         </form>
-    </div>
 </div>
 
     </div>
