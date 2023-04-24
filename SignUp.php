@@ -121,7 +121,7 @@
     mysqli_begin_transaction($conn);
 
     // Insert into users table
-    $query1 = "INSERT INTO users (firstName, lastName, email, password) VALUES ('$firstName', '$lastName', '$email', '$password')";
+    $query1 = "INSERT INTO users (firstName, lastName, email, company, password) VALUES ('$firstName', '$lastName', '$email', '$company', '$password')";
     if (!mysqli_query($conn, $query1)) {
       echo "Error: " . $query1 . "<br>" . mysqli_error($conn);
       mysqli_rollback($conn);
@@ -147,12 +147,9 @@
     // Commit transaction
     mysqli_commit($conn);
 
-    session_start();
-    $_SESSION['user_id'] = $user_id;
-    $_SESSION['user_id'] = mysqli_insert_id($conn);
     echo "New record created successfully";
-    echo "Login Successful... Redirecting";
-    header("Location: profilePage.php");
+
+    header("Location: login.php");
   }
   ?>
 </body>
