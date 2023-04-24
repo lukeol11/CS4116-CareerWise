@@ -43,19 +43,19 @@
               </div>
             </div>
 
-          <div class="right-box">
-            <h1> Jobs & Education</h1>
-            <h3>Previous Company</h3>
+            <div class="right-box">
+              <h1> Jobs & Education</h1>
+              <h3>Previous Company</h3>
               <input type="text" name="company" placeholder="Company">
               <input type="text" name="position" placeholder="Position">
               <input type="date" name="employment_start_date" placeholder="Start">
               <input type="date" name="employment_end_date" placeholder="End">
-            <h3>Education</h3>
+              <h3>Education</h3>
               <input type="text" name="school" placeholder="University">
               <input type="text" name="course" placeholder="Course">
               <input type="date" name="education_start_date" placeholder="Start">
               <input type="date" name="education_end_date" placeholder="End">
-          </div>
+            </div>
           </div>
           <button class="btn-primary" name="submit" type="submit"> Create! <span> &#x27f6; </span></button>
         </form>
@@ -79,7 +79,6 @@
 
   if (isset($_POST['submit'])) {
 
-    $user_id = uniqid();
     //information for user
     $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
     $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
@@ -124,12 +123,17 @@
     mysqli_begin_transaction($conn);
 
     // Insert into users table
-    $query1 = "INSERT INTO users (user_id, firstName, lastName, email, company, password) VALUES ('$user_id', '$firstName', '$lastName', '$email', '$company', '$password')";
+    $query1 = "INSERT INTO users (firstName, lastName, email, company, password) VALUES ('$firstName', '$lastName', '$email', '$company', '$password')";
     if (!mysqli_query($conn, $query1)) {
       echo "Error: " . $query1 . "<br>" . mysqli_error($conn);
       mysqli_rollback($conn);
       exit();
     }
+
+    $queryId = "SELECT * FROM users WHERE email = '$email'";
+    $resultId = mysqli_query($conn, $queryId);
+    $row = mysqli_fetch_assoc($resultId);
+    $user_id = $row['user_id'];
 
     // Insert into employment_history table
     $query2 = "INSERT INTO employment_history (employment_id, user_id, company_id, company, position, start_date, end_date) VALUES (null, '$user_id', '$companyId', '$company', '$position', '$employment_start_date', '$employment_end_date')";
