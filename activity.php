@@ -58,6 +58,35 @@
 
             </div>
         </div>
+
+
+        <!-- admin controls -->
+        <?php
+        session_start();
+        if ($_SESSION['admin'] == true) {
+            echo '<div id="content"><div id="adminControls">
+            <h2>Admin Controls</h2>
+            <form method="post">
+            <input type="text" name="postId" placeholder="Post Id" required style="width: 25%">
+            <button type="submit" class="btn btn-primary" name="delete">Delete Post</button>
+            </form>
+        </div></div>';
+            if (isset($_POST['delete'])) {
+                $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                $id = mysqli_real_escape_string($connection, $_POST['postId']);
+                $sql = "DELETE FROM posts WHERE id = '$id'";
+                $result = mysqli_query($connection, $sql);
+                if ($result) {
+                    echo "Post Deleted successfully!";
+                } else {
+                    echo "Error: " . mysqli_error($connection) . " (" . mysqli_errno($connection) . ")";
+                }
+                mysqli_close($connection);
+            }
+        }
+        ?>
+
+        <!-- display posts -->
         <?php
         $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
 
@@ -76,7 +105,9 @@
             echo "Name: " . $row["FirstName"] . " " . $row["LastName"] . "<br>";
             echo "Subject: " . $row["subject"] . "<br>";
             echo "Content: " . $row["content"] . "<br>";
+            echo "<br>";
             echo "Posted on: " . $row["postDate"] . "<br>";
+            echo "Post Id: " . $row["id"] . "<br>";
             echo "<br>";
             echo '
                     </div>
@@ -87,7 +118,9 @@
         // Close the database connection
         mysqli_close($connection);
         ?>
+
     </div>
+
 </body>
 
 </html>
