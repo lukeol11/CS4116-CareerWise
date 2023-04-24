@@ -67,7 +67,6 @@
             ?>
         </div>
         <form method="post" class="search-form">
-            <label>Search</label>
             <input type="text" name="search">
             <input type="submit" name="submit">
         </form>
