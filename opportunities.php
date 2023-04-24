@@ -61,15 +61,11 @@
                     echo "<br><br>";
                 }
             }
-            
-            $email = $_SESSION['email'];
-            $query = "SELECT * FROM business WHERE email = '$email'";
-            $result = mysqli_query($connection, $query);
-            $queryResult = mysqli_num_rows($result);
-            if($queryResult > 0){
+
+            if ($_SESSION['user_id'] == $company_id) {
                 echo "<a href='createVacancy.php'>Create Vacancy</a>";
             }
-            
+
             // Close the database connection
             mysqli_close($connection);
             ?>
