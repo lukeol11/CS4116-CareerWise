@@ -23,18 +23,49 @@
             <div id="activity">
                 <h2> Activity </h2>
                 <h3>Create a post</h3>
+                <form method="post">
+                    <input type="text" name="subject" placeholder="Subject" required style="width: 25%">
+                    <br>
+                    <textarea name="content" rows="10" placeholder="Content" required style="width: 60%"></textarea>
+                    <br>
+                    <button type="submit" class="btn btn-primary" name="makePost">Post</button>
+                </form>
 
+                <?php
+                $hostName = "sql109.epizy.com";
+                $userName = "epiz_33784251";
+                $password = "XzX7r5XomWU";
+                $databaseName = "epiz_33784251_cs4116";
+                if (isset($_POST['makePost'])) {
+                    $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
+                    $subject = mysqli_real_escape_string($connection, $_POST['subject']);
+                    $content = mysqli_real_escape_string($connection, $_POST['content']);
+
+                    session_start();
+                    $userId = $_SESSION['user_id'];
+
+                    $sql = "INSERT INTO posts (id, user_id, subject, content) VALUES (null, '$userId', '$subject', '$content')";
+                    $result = mysqli_query($connection, $sql);
+
+                    if ($result) {
+                        echo "Post Made successfully!";
+                    } else {
+                        echo "Error: " . mysqli_error($connection) . " (" . mysqli_errno($connection) . ")";
+                    }
+                    mysqli_close($connection);
+                }
+                ?>
 
             </div>
         </div>
         <?php
-        $hostName = "sql109.epizy.com";
-        $userName = "epiz_33784251";
-        $password = "XzX7r5XomWU";
-        $databaseName = "epiz_33784251_cs4116";
         $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
 
-        $query = "SELECT posts.subject, posts.content, users.FirstName, users.LastName FROM posts INNER JOIN users ON posts.user_id = users.user_id";
+        $query = "SELECT posts.id, posts.subject, posts.content, users.FirstName, users.LastName, posts.postDate 
+        FROM posts 
+        INNER JOIN users ON posts.user_id = users.user_id
+        ORDER BY posts.id DESC
+        ";
         $result = mysqli_query($connection, $query);
 
         while ($row = mysqli_fetch_assoc($result)) {
@@ -45,6 +76,7 @@
             echo "Name: " . $row["FirstName"] . " " . $row["LastName"] . "<br>";
             echo "Subject: " . $row["subject"] . "<br>";
             echo "Content: " . $row["content"] . "<br>";
+            echo "Posted on: " . $row["postDate"] . "<br>";
             echo "<br>";
             echo '
                     </div>
