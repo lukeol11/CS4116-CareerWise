@@ -31,7 +31,6 @@
         } else {
             session_start();
             $companyId = $_SESSION['company_id'];
-            echo "company id is not set";
             $companyDetails = getCompanyDetails($connection, $companyId);
             $_POST['companyDetails'] = $companyDetails;
         }
