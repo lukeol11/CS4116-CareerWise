@@ -21,3 +21,10 @@ div#content {
     margin-right: auto;
     min-height: 20em;
 }
+
+div#content .btn-primary, div#content div#adminControls .btn-primary {
+    background-image: linear-gradient(to bottom,#3CABC3,#3497ad);
+    background-color: #3696ac;
+    font-size: 1.5em;
+    padding: 1em;
+}

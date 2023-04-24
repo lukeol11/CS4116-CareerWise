@@ -20,6 +20,7 @@
 
         <div id="content">
             <div id="people">
+                <h2> People </h2>
                 <?php
                 $hostName = "sql109.epizy.com";
                 $userName = "epiz_33784251";
