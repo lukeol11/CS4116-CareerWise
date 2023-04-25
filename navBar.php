@@ -16,8 +16,10 @@
         session_start();
         if (isset($_SESSION['user_id']) && !isset($_SESSION['company_id'])) {
           echo '<a href="profilePage.php">You</a>';
+          echo '<a href="login.php">Log Out</a>';
         } elseif (isset($_SESSION['company_id']) && !isset($_SESSION['user_id'])) {
           echo '<a href="companyPage.php">You</a>';
+          echo '<a href="login.php">Log Out</a>';
         } else {
           session_unset();
           echo '<a href="login.php">You</a>';
