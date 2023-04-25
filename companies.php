@@ -19,6 +19,15 @@
         </div>
 
         <div id="content">
+            <div id="search">
+                <form action="" method="get">
+                    <input type="text" name="query" placeholder="Search">
+                    <button type="submit">Go</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="content">
             <div id="companies">
                 <h2> Companies </h2>
                 <?php
@@ -28,7 +37,17 @@
                 $databaseName = "epiz_33784251_cs4116";
                 $connection = mysqli_connect($hostName, $userName, $password, $databaseName);
 
-                $query = "SELECT * FROM business";
+                // Check if a search query was submitted
+                if (isset($_GET["query"])) {
+                    $search_query = $_GET["query"];
+
+                    // request based on search query
+                    $query = "SELECT * FROM business WHERE company LIKE '%$search_query%'";
+                } else {
+                    // else show all businesses
+                    $query = "SELECT * FROM business";
+                }
+
                 $result = mysqli_query($connection, $query);
 
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -42,8 +61,8 @@
                 ?>
 
 
-            </div>
 
+            </div>
         </div>
     </div>
 </body>

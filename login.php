@@ -46,6 +46,10 @@
 
               <?php
               if (isset($_POST['login'])) {
+                //first make sure the user is not already logged in
+                session_start();
+                session_unset();
+
                 $hostName = "sql109.epizy.com";
                 $email = "epiz_33784251";
                 $password = "XzX7r5XomWU";
@@ -65,7 +69,6 @@
                   $user_type = $row['user_type'];
 
                   // Add the user ID to the session
-                  session_start();
                   $_SESSION['user_id'] = $user_id;
 
                   // Check if the user is an admin
