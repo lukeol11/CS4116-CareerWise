@@ -62,6 +62,12 @@
                 }
             }
             
+            session_start();
+            $company_id = $_SESSION['company_id'];
+            if ($company_id != NULL) {
+                echo "<a href='createVacancy.php'>Create Vacancy</a>";
+            }
+
             // Close the database connection
             mysqli_close($connection);
             ?>
@@ -70,7 +76,6 @@
             <input type="text" name="search">
             <input type="submit" name="submit">
         </form>
-    </div>
 </div>
 
     </div>
