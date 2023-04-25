@@ -22,7 +22,7 @@
             <div id="search">
                 <form action="" method="get">
                     <input type="text" name="query" placeholder="Search">
-                    <button type="submit">Go</button>
+                    <button type="submit"  class="btn btn-primary">Go</button>
                 </form>
             </div>
         </div>
