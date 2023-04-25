@@ -10,7 +10,6 @@
       <li <?php if ($_SERVER['PHP_SELF'] == "/companies.php") echo 'class="active"'; ?>><a href="companies.php">Companies</a></li>
       <li <?php if ($_SERVER['PHP_SELF'] == "/activity.php") echo 'class="active"'; ?>><a href="activity.php">Activity</a></li>
       <li <?php if ($_SERVER['PHP_SELF'] == "/opportunities.php") echo 'class="active"'; ?>><a href="opportunities.php">Opportunities</a></li>
-      <li <?php if ($_SERVER['PHP_SELF'] == "/createVacancy.php") echo 'class="active"'; ?>><a href="createVacancy.php">Create Vacancy</a></li>
       <li style="float: right;">
         <a href="login.php">Log Out</a>
       </li>
