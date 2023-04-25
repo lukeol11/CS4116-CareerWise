@@ -46,6 +46,10 @@
 
               <?php
               if (isset($_POST['login'])) {
+                //first make sure the user is not already logged in
+                session_unset();
+
+                
                 $hostName = "sql109.epizy.com";
                 $email = "epiz_33784251";
                 $password = "XzX7r5XomWU";
