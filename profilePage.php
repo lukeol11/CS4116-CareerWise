@@ -34,6 +34,7 @@
         }
         //check if user is banned
         $sql = "SELECT * FROM banned WHERE user_id = $userId";
+
         $result = mysqli_query($connection, $sql);
         $banned = mysqli_num_rows($result) > 0;
         mysqli_close($connection);
@@ -55,6 +56,7 @@
                         echo '<button type="button" class="btn btn-primary">Add Friend +</button>';
                     }
                     ?>
+
                 </div>
                 <div id="body">
                     <div id="left">
