@@ -2,6 +2,8 @@
 
 ## CareerWise
 
+[Github Repo](https://github.com/lukeol11/CS4116-CareerWise)
+
 ## URL
 
 | Version | URL                                                                      |
