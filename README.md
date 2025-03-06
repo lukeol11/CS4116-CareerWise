@@ -8,20 +8,20 @@
 
 | Version | URL                                                                      |
 | ------- | ------------------------------------------------------------------------ |
-| Master  | [careerwise.great-site.net](http://careerwise.great-site.net/)           |
-| Beta    | [beta.careerwise.great-site.net](http://beta.careerwise.great-site.net/) |
+| Master  | ~~[careerwise.great-site.net](#)~~           |
+| Beta    | ~~[beta.careerwise.great-site.net](#)~~ |
 
 ## Sample Accounts
 
 ### Admin
 
-- Email: br@gmail.com
-- Password: Careerwise
+- Email: ~~<br@gmail.com>~~
+- Password: ~~Careerwise~~
 
 ### Sample
 
-- Email: pp@gmail.com
-- Password: coca-cola
+- Email: ~~<pp@gmail.com>~~
+- Password: ~~coca-cola~~
 
 ## Contributors
 
